@@ -5,13 +5,13 @@
     </head>
 
     <body>
-        <div> OLÁ </div>
+        <div> separa um bloco na pagina </div>
 
         <P>PARÁGRAFO</P>
         <br /> <!--QUEBRA DE LINHA-->
         <a href="https://www.reddit.com/r/kingkong/comments/mr3bxw/mr_kong_flipping_you_off/?tl=pt-br#lightbox">O QUE VAI TA ESCRITO NO LINK</a>
         <h1>INSERÇÃO DE TEXTO</h1>
-        <table border="1">
+        <table border="20">
             <tr>
                 <th>PAIS</th>
                 <th>CAPITAL</th>
@@ -32,6 +32,45 @@
             <li>Café</li>
             <li>leite</li>  
         </ul>
+
+        <form>                                                      <!--FORMULÁRIO-->
+            <label for="nome">NOME:</label> <br />                  <!--Label é o rótulo da caixa de texto-->
+            <input type="text" id="nome" name="nome" placeholder="seu nome" required /> <br />
+            <label for="email">EMAIL:</label> <br />
+            <input type="email" id="email" name="email" placeholder="username@gmail.com"/> <br />
+            <label for="senha" > SENHA:</label> <br />
+            <input type="password" id="senha" name="senha" placeholder="insira sua senha" required /> <br />
+        </form>
+
+        <p>Selecione um ou mais assuntos</p>
+        <input type="checkbox" id="html" name="assunto" value="html" />
+        <label for="html">HTML</label> <br />
+        <input type="checkbox" id="css" name="assunto" value="css" />
+        <label for="css">CSS</label> <br />
+        
+        <p>SEXO:</p>
+        <input type="radio" id="masc" name="genero" value="masculino" />
+        <label for="masc">MASCULINO</label> <br />
+        <input type="radio" id="fem" name="genero" value="feminino" />
+        <label for="fem">FEMININO</label> <br />
+
+        <label for="menssagens">MENSAGENS:</label> <br />
+        <textarea id="menssagens" name="menssagens" cols="100" rows="10" placeholder="digite sua mensagem aqui"></textarea>    
+
+        <a href="https://www.youtube.com/watch?v=yT8Y7vkZI9A">
+        <button type="button">    
+            <img src="https://pbs.twimg.com/media/DSA5rQzW4AEdlD7?format=jpg&name=240x240" alt="eu tenho probleminha">
+        
+        </button>
+        </a>
+        <form>
+            <input type="button" value="Click aqui" /> <br /> <!-- como input só é possivel inserir texto e emoji-->
+             <input type="submit" value="Enviar" /> <br />
+             <input type="reset" value="Limpar" />
+        </form>
+
+        
+
     </body>
 
     <footer>
