@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <link rel="stylesheet" href="forca.css" />
+        <title>FORCA</title>
+    </head>
+
+    <header class="cabeça">
+        <h1>Bem vindo ao jogo da Forca</h1>
+    </header>
+
+    <body class="body">
+        <div class="guias">
+            <a href="introducao.html" alt="Redirecionamento para página de como jogar">Como jogar</a>
+            <button type="submit" class="botao_jogar">Jogar</button>
+            <a href="introducao.html">Entre em contato conosco</a>
+        </div>
+        <div class="espaço_jogo">
+            <p>Informe uma letra para iniciar</p>
+            <br />
+            <img src="http://gifmania.com.br/wp-content/uploads/2020/06/perdi-gif.gif" alt="PERDI" width="300" height="200" />
+            <h1>Palavra: <span id="palavra">_ _ _ _ _</span> <!--Exemplo de palavra com 5 letras--> 
+                <!--Colocar a lógica do desenho do boneco aqui-->
+            </h1>
+        </div>
+        <div class="espaço_letras">
+            <input type="text" id="Letra" name="Letra" placeholder="Digite uma letra" required />
+            <button class="botao_envia" type="submit" style="margin-left: 5px;">Enviar</button>
+            <button class="botao_reinicia" type="reset" style="margin-left: 5px;">Reiniciar</button>
+        </div>
+    </body>
+</html>

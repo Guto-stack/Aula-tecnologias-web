@@ -1,0 +1,91 @@
+.cabeça {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: rgba(126, 45, 126, 0.6);
+    text-align: center;
+    justify-content: center;
+    display: flex;
+
+}
+
+.espaço_jogo {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.espaço_jogo p {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+    font-weight: lighter;
+    font-style: inherit;
+}
+
+.espaço_letras {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.body {
+    background-color: rgb(255, 182, 193, 0.6);
+    margin: 0px;
+}
+
+.botao_envia {
+    background-color: tomato;
+    border-radius: 25px;
+    width: 100px;
+    height: 100px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+
+}
+
+.botao_reinicia {
+    background-color: tomato;
+    border-radius: 25px;
+    width: 100px;
+    height: 100px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.guias {
+    margin-top: 0px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(126, 45, 126, 0.4);
+}
+
+.guias a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+.guias button {
+    background-color: rgb(136, 0, 196);
+    border: none;
+    border-radius: 25px;
+    color: inherit;
+    font-weight: bold;
+}
+
+.botao_jogar {
+    margin-left: 100px;
+    margin-right: 100px;
+}
