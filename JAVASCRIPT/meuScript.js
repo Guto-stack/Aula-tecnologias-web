@@ -4,12 +4,46 @@ const input_palavra = document.getElementById("Letra")
 const botao_envia = document.getElementById("botao_envia")
 const jogar = document.getElementById("botao_jogar") 
 
+
+
+function letra_errada() {
+    const span = document.getElementById("letras_erradas")
+    // vermelho para letras erradas
+    span.style.color = "red"
+    span.textContent += input_palavra.value.toUpperCase() + " "
+
+}
+
+function exibir_palavra() {
+    const span = document.getElementById("palavra")
+    span.textContent = "_ ".repeat(palavra_sorteada.length)
+}
+
+function exibir_letras(letra) {
+    const span = document.getElementById("palavra")
+    if (palavra_sorteada.includes(letra)) {
+        let nova_exibicao = ""
+        for (let i = 0; i < palavra_sorteada.length; i++) {
+            if (palavra_sorteada[i] === letra) {
+                nova_exibicao += letra + " "
+            } else {
+                nova_exibicao += span.textContent[i * 2] + " "
+            }
+        }
+        span.textContent = nova_exibicao
+    }
+}
+
+
+
+
 jogar.addEventListener("click", function() {
     console.log("Vamos começar o jogo! Boa sorte!");
 });
 
 const palavras = ["CASA", "CARRO", "ESCOLA", "JAVASCRIPT", "PYTHON", "COMPUTADOR", "TELEFONE", "MESA", "CADEIRA", "JANELA"]
 const palavra_sorteada = palavras[Math.floor(Math.random() * palavras.length)]
+exibir_palavra();
 
 console.log("Palavra sorteada:", palavra_sorteada); 
 
@@ -21,15 +55,28 @@ input_palavra.addEventListener("input", function() {
     }
 });
 
-botao_envia.addEventListener("click", function() {
-    const letra = input_palavra.value.toUpperCase(); 
-    if (palavra_sorteada.includes(letra)) {
-        console.log("Parabéns! Você acertou uma letra.");
-    } else {
-        console.log("Ops! Essa letra não está na palavra.");
+input_palavra.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        botao_envia.click();
     }
 });
 
+
+
+botao_envia.addEventListener("click", function() {
+    const letra = input_palavra.value.toUpperCase(); 
+    if (palavra_sorteada.includes(letra)) {        
+        console.log("Parabéns! Você acertou uma letra.");
+        exibir_letras(letra);
+    } else {
+        console.log("Ops! Essa letra não está na palavra.");
+        letra_errada();
+    }
+});
+
+botao_reinicia.addEventListener("click", function(){
+    location.reload();
+});
 
 
 

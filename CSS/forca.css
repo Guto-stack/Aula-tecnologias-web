@@ -50,7 +50,7 @@
 
 }
 
-.botao_reinicia {
+#botao_reinicia {
     background-color: tomato;
     border-radius: 25px;
     width: 100px;
