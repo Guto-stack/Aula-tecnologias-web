@@ -37,7 +37,7 @@
     margin: 0px;
 }
 
-.botao_envia {
+#botao_envia {
     background-color: tomato;
     border-radius: 25px;
     width: 100px;
@@ -85,7 +85,7 @@
     font-weight: bold;
 }
 
-.botao_jogar {
+#botao_jogar {
     margin-left: 100px;
     margin-right: 100px;
 }
