@@ -5,7 +5,9 @@ const botao_envia = document.getElementById("botao_envia")
 const botao_jogar = document.getElementById("botao_jogar") 
 const botao_reinicia = document.getElementById("botao_reinicia")
 const bloqueio = document.getElementById("bloqueio")
-
+const canvas = document.getElementById("canvas")
+const ctx = canvas.getContext("2d")
+let erros = 0
 
 
 
@@ -45,6 +47,7 @@ function exibir_letras(letra) {
 const palavras = ["CASA", "CARRO", "ESCOLA", "JAVASCRIPT", "PYTHON", "COMPUTADOR", "TELEFONE", "MESA", "CADEIRA", "JANELA"]
 const palavra_sorteada = palavras[Math.floor(Math.random() * palavras.length)]
 exibir_palavra();
+desenha_forca();
 
 console.log("Palavra sorteada:", palavra_sorteada); 
 
@@ -79,9 +82,50 @@ botao_envia.addEventListener("click", function() {
         console.log("Ops! Essa letra não está na palavra.");
         letra_errada();
         input_palavra.value = "";
+        erros++;
+        desenha_boneco(erros);
     } 
     });
 
+    function desenha_forca() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#000";
+
+    //base
+    ctx.beginPath();
+    ctx.moveTo(10, 190);
+    ctx.lineTo(150, 190);
+    ctx.stroke();
+
+    //poste
+    ctx.beginPath();
+    ctx.moveTo(30, 190);
+    ctx.lineTo(30, 10);
+    ctx.stroke();
+
+    //barra horizontal
+    ctx.beginPath();
+    ctx.moveTo(30, 10);
+    ctx.lineTo(100, 10);
+    ctx.stroke();
+
+    //corda
+    ctx.beginPath();
+    ctx.moveTo(100, 10);
+    ctx.lineTo(100, 50);
+    ctx.stroke();
+    }
+
+    function desenha_boneco(erros) {
+    switch(erros) {
+        case 1: //cabeça
+            ctx.beginPath();
+            ctx.arc(100, 70, 20, 0, Math.PI * 2);
+            ctx.stroke();
+            break;
+    }
+}
 botao_reinicia.addEventListener("click", function(){
     exibir_palavra();
     const span_letras_erradas = document.getElementById("letras_erradas")
