@@ -124,6 +124,52 @@ botao_envia.addEventListener("click", function() {
             ctx.arc(100, 70, 20, 0, Math.PI * 2);
             ctx.stroke();
             break;
+
+        case 2: //corpo
+            ctx.beginPath();
+            ctx.moveTo(100, 90);
+            ctx.lineTo(100, 140);
+            ctx.stroke();
+            break;
+
+        case 3: 
+            ctx.beginPath();
+            ctx.moveTo(100, 100);
+            ctx.lineTo(80, 120);
+            ctx.stroke();
+            break;
+
+        case 4:
+            ctx.beginPath();
+            ctx.moveTo(100, 100);
+            ctx.lineTo(120, 120);
+            ctx.stroke();
+            break;
+
+        case 5:
+            ctx.beginPath();
+            ctx.moveTo(100, 140);
+            ctx.lineTo(80, 170);
+            ctx.stroke();
+            break;
+        
+        case 6:
+            ctx.beginPath();
+            ctx.moveTo(100, 140);
+            ctx.lineTo(120, 170);
+            ctx.stroke();
+            break;
+
+        case 7:
+            ctx.beginPath();
+            ctx.moveTo(90, 65);
+            ctx.lineTo(95, 70);
+            ctx.stroke();
+            ctx.moveTo(95, 65);
+            ctx.lineTo(90, 70);
+            ctx.stroke();
+            break;
+
     }
 }
 botao_reinicia.addEventListener("click", function(){
