@@ -2,6 +2,38 @@ console.log("O JavaScript carregou")
 
 const flash_vermelho = document.getElementById("flash_vermelho");
 
+
+
+const input_palavra = document.getElementById("Letra")
+const botao_envia = document.getElementById("botao_envia")
+const botao_jogar = document.getElementById("botao_jogar") 
+const botao_reinicia = document.getElementById("botao_reinicia")
+const bloqueio = document.getElementById("bloqueio")
+const canvas = document.getElementById("canvas")
+const ctx = canvas.getContext("2d")
+let erros = 0
+
+
+function mostrarGameOver(mensagem, tipo) {
+    Toastify({
+        text: mensagem,
+        duration: 3000,
+        gravity: "middle",
+        position: "center",
+        backgroundColor: tipo === "sucesso" ? "green" : "red",
+    }).showToast();
+}
+
+function mostrarToast(mensagem, tipo) {
+    Toastify({
+        text: mensagem,
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: tipo === "sucesso" ? "green" : "red",
+    }).showToast();
+}
+
 function efeitoVitoria() {
     if (typeof confetti !== 'undefined') {
         confetti({
@@ -32,16 +64,6 @@ function efeitoDerrota() {
     };
     flash();
 }
-
-const input_palavra = document.getElementById("Letra")
-const botao_envia = document.getElementById("botao_envia")
-const botao_jogar = document.getElementById("botao_jogar") 
-const botao_reinicia = document.getElementById("botao_reinicia")
-const bloqueio = document.getElementById("bloqueio")
-const canvas = document.getElementById("canvas")
-const ctx = canvas.getContext("2d")
-let erros = 0
-
 
 
 botao_jogar.addEventListener("click", function() {
@@ -87,12 +109,12 @@ console.log("Palavra sorteada:", palavra_sorteada);
 input_palavra.addEventListener('keydown', function(e) {
     const letra = input_palavra.value;
     if (letra.length > 1 ) {
-        console.log("Por favor, insira apenas uma letra.");
+        mostrarToast("Por favor, insira apenas uma letra.", "erro");
         input_palavra.value = ""; 
     }
     if (/^[0-9]$/.test(e.key)){
         e.preventDefault();
-        console.log("Por favor, insira apenas letras.");
+        mostrarToast("Por favor, insira apenas letras.", "erro");
         input_palavra.value = "";
     }
 });
@@ -108,12 +130,12 @@ input_palavra.addEventListener("keydown", function(event) {
 botao_envia.addEventListener("click", function() {
     const letra = input_palavra.value.toUpperCase(); 
     if (palavra_sorteada.includes(letra)) {        
-        console.log("Parabéns! Você acertou uma letra.");
+        mostrarToast("Parabens! Você acertou uma letra.", "sucesso");
         exibir_letras(letra);
         input_palavra.value = "";
         verificar_vitoria();
     } else {
-        console.log("Ops! Essa letra não está na palavra.");
+        mostrarToast("Ops! Essa letra não está na palavra.", "erro");
         letra_errada();
         input_palavra.value = "";
         erros++;
@@ -125,7 +147,7 @@ botao_envia.addEventListener("click", function() {
     function verificar_vitoria(){
     const span = document.getElementById("palavra")
         if (!span.textContent.includes("_")) {
-            alert("Parabéns! Você venceu!");
+            mostrarToast("Parabéns! Você venceu!", "sucesso");
             efeitoVitoria();
             setTimeout(() => location.reload(), 3000);
             
@@ -134,7 +156,7 @@ botao_envia.addEventListener("click", function() {
 
     function verificar_derrota(){
         if (erros > 7) {
-            alert("Game Over! A palavra era: " + palavra_sorteada);
+           mostrarGameOver("Game Over! A palavra era: " + palavra_sorteada, "erro");
             efeitoDerrota();
             setTimeout(() => location.reload(), 1000);
         }
