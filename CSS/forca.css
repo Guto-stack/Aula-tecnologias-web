@@ -1,114 +1,143 @@
-.cabeça {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    background-color: rgba(126, 45, 126, 0.6);
-    text-align: center;
-    justify-content: center;
-    display: flex;
-
-}
-
-.espaço_jogo {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-.espaço_jogo p {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 30px;
-    font-weight: lighter;
-    font-style: inherit;
-}
-
-.espaço_letras {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    margin-top: 50px;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 .body {
-    background-color: rgb(255, 182, 193, 0.6);
-    margin: 0px;
+    background-color: #0f172a;
+    color: #e2e8f0;
     height: 100%;
     width: 100%;
 }
 
-#botao_envia {
-    background-color: tomato;
-    border-radius: 25px;
-    width: 100px;
-    height: 100px;
-    padding: 10px 20px;
+.cabeça {
+    background-color: #1e293b;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
-
-}
-
-#botao_reinicia {
-    background-color: tomato;
-    border-radius: 25px;
-    width: 100px;
-    height: 100px;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
+    padding: 15px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .guias {
-    margin-top: 0px;
-    text-align: center;
-    justify-content: center;
     display: flex;
-    flex-direction: row;
-    background-color: rgba(126, 45, 126, 0.4);
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    background-color: #1e293b;
+    padding: 15px;
 }
 
 .guias a {
     text-decoration: none;
-    color: inherit;
+    color: #e2e8f0;
     font-weight: bold;
+    transition: 0.3s;
+}
+
+.guias a:hover {
+    color: #38bdf8;
 }
 
 .guias button {
-    background-color: rgb(136, 0, 196);
+    background-color: #38bdf8;
     border: none;
-    border-radius: 25px;
-    color: inherit;
+    border-radius: 20px;
+    padding: 10px 20px;
     font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.guias button:hover {
+    background-color: #0ea5e9;
+    transform: scale(1.05);
+}
+
+.espaço_jogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.espaço_jogo p {
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.espaço_letras {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    gap: 15px;
+}
+
+#Letra {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    text-align: center;
+}
+
+#botao_envia, #botao_reinicia {
+    background-color: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#botao_envia:hover, #botao_reinicia:hover {
+    background-color: #16a34a;
+    transform: scale(1.05);
 }
 
 #botao_jogar {
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 #bloqueio {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(15, 23, 42, 0.8);
     z-index: 10;
 }
 
-.letras_erradas{
+.letras_erradas {
     width: 500px;
     height: 75px;
+    border: 1px solid #38bdf8;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .flash_vermelho {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(255, 0, 0, 0.5);
+    background: rgba(239, 68, 68, 0.4);
     z-index: 10;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+* {
+    transition: all 0.2s ease-in-out;
 }

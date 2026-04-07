@@ -11,6 +11,7 @@ const botao_reinicia = document.getElementById("botao_reinicia")
 const bloqueio = document.getElementById("bloqueio")
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
+
 let erros = 0
 
 
@@ -37,9 +38,9 @@ function mostrarToast(mensagem, tipo) {
 function efeitoVitoria() {
     if (typeof confetti !== 'undefined') {
         confetti({
-            angle: 60,
-            spread: 55,
-            particleCount: 100,
+            angle: 90,
+            spread: 200,
+            particleCount: 500,
             origin: { x: 0 }
         });
     } else {
@@ -164,8 +165,8 @@ botao_envia.addEventListener("click", function() {
 
     function desenha_forca() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = "#000";
+    ctx.strokeStyle = "#38bdf8";
+    ctx.lineWidth = 3;
 
     //base
     ctx.beginPath();
@@ -193,7 +194,9 @@ botao_envia.addEventListener("click", function() {
     }
 
     function desenha_boneco(erros) {
-    switch(erros) {
+        ctx.strokeStyle = "#e2e8f0";
+        ctx.lineWidth = 3;
+        switch(erros) {
         case 1: //cabeça
             ctx.beginPath();
             ctx.arc(100, 90, 20, 0, Math.PI * 2);
