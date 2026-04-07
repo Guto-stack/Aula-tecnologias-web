@@ -1,5 +1,18 @@
 console.log("O JavaScript carregou")
 
+function mostrarConfetti() {
+    if (typeof confetti !== 'undefined') {
+        confetti({
+            angle: 60,
+            spread: 55,
+            particleCount: 100,
+            origin: { x: 0 }
+        });
+    } else {
+        console.error("Biblioteca confetti não carregada");
+    }
+}
+
 const input_palavra = document.getElementById("Letra")
 const botao_envia = document.getElementById("botao_envia")
 const botao_jogar = document.getElementById("botao_jogar") 
@@ -78,14 +91,33 @@ botao_envia.addEventListener("click", function() {
         console.log("Parabéns! Você acertou uma letra.");
         exibir_letras(letra);
         input_palavra.value = "";
+        verificar_vitoria();
     } else {
         console.log("Ops! Essa letra não está na palavra.");
         letra_errada();
         input_palavra.value = "";
         erros++;
         desenha_boneco(erros);
+        verificar_derrota();
     } 
     });
+
+    function verificar_vitoria(){
+    const span = document.getElementById("palavra")
+        if (!span.textContent.includes("_")) {
+            alert("Parabéns! Você venceu!");
+            mostrarConfetti();
+            setTimeout(() => location.reload(), 3000);
+            
+        }
+    }
+
+    function verificar_derrota(){
+        if (erros > 7) {
+            alert("Game Over! A palavra era: " + palavra_sorteada);
+            location.reload();
+        }
+    }
 
     function desenha_forca() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -94,13 +126,13 @@ botao_envia.addEventListener("click", function() {
 
     //base
     ctx.beginPath();
-    ctx.moveTo(10, 190);
-    ctx.lineTo(150, 190);
+    ctx.moveTo(10, 250);
+    ctx.lineTo(150, 250);
     ctx.stroke();
 
     //poste
     ctx.beginPath();
-    ctx.moveTo(30, 190);
+    ctx.moveTo(30, 250);
     ctx.lineTo(30, 10);
     ctx.stroke();
 
@@ -113,7 +145,7 @@ botao_envia.addEventListener("click", function() {
     //corda
     ctx.beginPath();
     ctx.moveTo(100, 10);
-    ctx.lineTo(100, 50);
+    ctx.lineTo(100, 70);
     ctx.stroke();
     }
 
@@ -121,52 +153,63 @@ botao_envia.addEventListener("click", function() {
     switch(erros) {
         case 1: //cabeça
             ctx.beginPath();
-            ctx.arc(100, 70, 20, 0, Math.PI * 2);
+            ctx.arc(100, 90, 20, 0, Math.PI * 2);
             ctx.stroke();
             break;
 
         case 2: //corpo
             ctx.beginPath();
-            ctx.moveTo(100, 90);
-            ctx.lineTo(100, 140);
+            ctx.moveTo(100, 110);
+            ctx.lineTo(100, 160);
             ctx.stroke();
             break;
 
         case 3: 
             ctx.beginPath();
-            ctx.moveTo(100, 100);
-            ctx.lineTo(80, 120);
+            ctx.moveTo(100, 120);
+            ctx.lineTo(80, 150);
             ctx.stroke();
             break;
 
         case 4:
             ctx.beginPath();
-            ctx.moveTo(100, 100);
-            ctx.lineTo(120, 120);
+            ctx.moveTo(100, 120);
+            ctx.lineTo(120, 150);
             ctx.stroke();
             break;
 
         case 5:
             ctx.beginPath();
-            ctx.moveTo(100, 140);
-            ctx.lineTo(80, 170);
+            ctx.moveTo(100, 160);
+            ctx.lineTo(80, 190);
             ctx.stroke();
             break;
         
         case 6:
             ctx.beginPath();
-            ctx.moveTo(100, 140);
-            ctx.lineTo(120, 170);
+            ctx.moveTo(100, 160);
+            ctx.lineTo(120, 190);
             ctx.stroke();
             break;
 
         case 7:
             ctx.beginPath();
-            ctx.moveTo(90, 65);
-            ctx.lineTo(95, 70);
+            ctx.moveTo(90, 85);
+            ctx.lineTo(95, 90);
             ctx.stroke();
-            ctx.moveTo(95, 65);
-            ctx.lineTo(90, 70);
+            ctx.moveTo(95, 85);
+            ctx.lineTo(90, 90);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(105, 85);
+            ctx.lineTo(110, 90);
+            ctx.stroke();
+            ctx.moveTo(110, 85);
+            ctx.lineTo(105, 90);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(95, 100);
+            ctx.lineTo(105, 100);
             ctx.stroke();
             break;
 
