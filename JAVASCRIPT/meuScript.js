@@ -1,6 +1,8 @@
 console.log("O JavaScript carregou")
 
-function mostrarConfetti() {
+const flash_vermelho = document.getElementById("flash_vermelho");
+
+function efeitoVitoria() {
     if (typeof confetti !== 'undefined') {
         confetti({
             angle: 60,
@@ -11,6 +13,24 @@ function mostrarConfetti() {
     } else {
         console.error("Biblioteca confetti não carregada");
     }
+}
+
+function efeitoDerrota() {
+    let count = 0;
+    const flash = () => {
+        if (count < 6) { // 3 piscadas (on/off)
+            if (count % 2 === 0) {
+                flash_vermelho.classList.add("flash_vermelho");
+            } else {
+                flash_vermelho.classList.remove("flash_vermelho");
+            }
+            count++;
+            setTimeout(flash, 200);
+        } else {
+            flash_vermelho.classList.remove("flash_vermelho");
+        }
+    };
+    flash();
 }
 
 const input_palavra = document.getElementById("Letra")
@@ -106,7 +126,7 @@ botao_envia.addEventListener("click", function() {
     const span = document.getElementById("palavra")
         if (!span.textContent.includes("_")) {
             alert("Parabéns! Você venceu!");
-            mostrarConfetti();
+            efeitoVitoria();
             setTimeout(() => location.reload(), 3000);
             
         }
@@ -115,7 +135,8 @@ botao_envia.addEventListener("click", function() {
     function verificar_derrota(){
         if (erros > 7) {
             alert("Game Over! A palavra era: " + palavra_sorteada);
-            location.reload();
+            efeitoDerrota();
+            setTimeout(() => location.reload(), 1000);
         }
     }
 
