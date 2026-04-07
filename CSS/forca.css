@@ -35,6 +35,8 @@
 .body {
     background-color: rgb(255, 182, 193, 0.6);
     margin: 0px;
+    height: 100%;
+    width: 100%;
 }
 
 #botao_envia {
@@ -88,4 +90,12 @@
 #botao_jogar {
     margin-left: 100px;
     margin-right: 100px;
+}
+
+#bloqueio {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 10;
 }

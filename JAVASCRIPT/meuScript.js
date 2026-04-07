@@ -2,13 +2,20 @@ console.log("O JavaScript carregou")
 
 const input_palavra = document.getElementById("Letra")
 const botao_envia = document.getElementById("botao_envia")
-const jogar = document.getElementById("botao_jogar") 
+const botao_jogar = document.getElementById("botao_jogar") 
+const botao_reinicia = document.getElementById("botao_reinicia")
+const bloqueio = document.getElementById("bloqueio")
 
+
+
+
+botao_jogar.addEventListener("click", function() {
+    bloqueio.style.display = "none"
+});
 
 
 function letra_errada() {
     const span = document.getElementById("letras_erradas")
-    // vermelho para letras erradas
     span.style.color = "red"
     span.textContent += input_palavra.value.toUpperCase() + " "
 
@@ -35,23 +42,22 @@ function exibir_letras(letra) {
 }
 
 
-
-
-jogar.addEventListener("click", function() {
-    console.log("Vamos começar o jogo! Boa sorte!");
-});
-
 const palavras = ["CASA", "CARRO", "ESCOLA", "JAVASCRIPT", "PYTHON", "COMPUTADOR", "TELEFONE", "MESA", "CADEIRA", "JANELA"]
 const palavra_sorteada = palavras[Math.floor(Math.random() * palavras.length)]
 exibir_palavra();
 
 console.log("Palavra sorteada:", palavra_sorteada); 
 
-input_palavra.addEventListener("input", function() {
+input_palavra.addEventListener('keydown', function(e) {
     const letra = input_palavra.value;
-    if (letra.length > 1) {
+    if (letra.length > 1 ) {
         console.log("Por favor, insira apenas uma letra.");
         input_palavra.value = ""; 
+    }
+    if (/^[0-9]$/.test(e.key)){
+        e.preventDefault();
+        console.log("Por favor, insira apenas letras.");
+        input_palavra.value = "";
     }
 });
 
@@ -68,15 +74,21 @@ botao_envia.addEventListener("click", function() {
     if (palavra_sorteada.includes(letra)) {        
         console.log("Parabéns! Você acertou uma letra.");
         exibir_letras(letra);
+        input_palavra.value = "";
     } else {
         console.log("Ops! Essa letra não está na palavra.");
         letra_errada();
-    }
-});
+        input_palavra.value = "";
+    } 
+    });
 
 botao_reinicia.addEventListener("click", function(){
-    location.reload();
+    exibir_palavra();
+    const span_letras_erradas = document.getElementById("letras_erradas")
+    span_letras_erradas.textContent = ""
 });
+
+
 
 
 
