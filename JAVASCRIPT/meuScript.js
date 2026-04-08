@@ -6,32 +6,29 @@ const flash_vermelho = document.getElementById("flash_vermelho");
 
 const input_palavra = document.getElementById("Letra")
 const botao_envia = document.getElementById("botao_envia")
-const botao_jogar = document.getElementById("botao_jogar") 
 const botao_reinicia = document.getElementById("botao_reinicia")
-const bloqueio = document.getElementById("bloqueio")
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 
 let erros = 0
 
-
-function mostrarGameOver(mensagem, tipo) {
+function mostrarGameOver(mensagem) {
     Toastify({
         text: mensagem,
         duration: 3000,
         gravity: "middle",
         position: "center",
-        backgroundColor: tipo === "sucesso" ? "green" : "red",
+        backgroundColor: "red",
     }).showToast();
 }
 
-function mostrarToast(mensagem, tipo) {
+function mostrarVitoria(mensagem) {
     Toastify({
         text: mensagem,
         duration: 3000,
-        gravity: "top",
-        position: "right",
-        backgroundColor: tipo === "sucesso" ? "green" : "red",
+        gravity: "middle",
+        position: "center",
+        backgroundColor: "green",
     }).showToast();
 }
 
@@ -66,12 +63,6 @@ function efeitoDerrota() {
     flash();
 }
 
-
-botao_jogar.addEventListener("click", function() {
-    bloqueio.style.display = "none"
-});
-
-
 function letra_errada() {
     const span = document.getElementById("letras_erradas")
     span.style.color = "red"
@@ -99,7 +90,6 @@ function exibir_letras(letra) {
     }
 }
 
-
 const palavras = ["CASA", "CARRO", "ESCOLA", "JAVASCRIPT", "PYTHON", "COMPUTADOR", "TELEFONE", "MESA", "CADEIRA", "JANELA"]
 const palavra_sorteada = palavras[Math.floor(Math.random() * palavras.length)]
 exibir_palavra();
@@ -107,17 +97,8 @@ desenha_forca();
 
 console.log("Palavra sorteada:", palavra_sorteada); 
 
-input_palavra.addEventListener('keydown', function(e) {
-    const letra = input_palavra.value;
-    if (letra.length > 1 ) {
-        mostrarToast("Por favor, insira apenas uma letra.", "erro");
-        input_palavra.value = ""; 
-    }
-    if (/^[0-9]$/.test(e.key)){
-        e.preventDefault();
-        mostrarToast("Por favor, insira apenas letras.", "erro");
-        input_palavra.value = "";
-    }
+input_palavra.addEventListener("input", function() {
+    this.value = this.value.replace(/[^a-zA-Z]/g, "").toUpperCase();
 });
 
 input_palavra.addEventListener("keydown", function(event) {
@@ -126,17 +107,13 @@ input_palavra.addEventListener("keydown", function(event) {
     }
 });
 
-
-
 botao_envia.addEventListener("click", function() {
-    const letra = input_palavra.value.toUpperCase(); 
+    const letra = input_palavra.value;
     if (palavra_sorteada.includes(letra)) {        
-        mostrarToast("Parabens! Você acertou uma letra.", "sucesso");
         exibir_letras(letra);
         input_palavra.value = "";
         verificar_vitoria();
     } else {
-        mostrarToast("Ops! Essa letra não está na palavra.", "erro");
         letra_errada();
         input_palavra.value = "";
         erros++;
@@ -148,7 +125,7 @@ botao_envia.addEventListener("click", function() {
     function verificar_vitoria(){
     const span = document.getElementById("palavra")
         if (!span.textContent.includes("_")) {
-            mostrarToast("Parabéns! Você venceu!", "sucesso");
+            mostrarVitoria("Parabéns! Você venceu!");
             efeitoVitoria();
             setTimeout(() => location.reload(), 3000);
             
@@ -157,7 +134,7 @@ botao_envia.addEventListener("click", function() {
 
     function verificar_derrota(){
         if (erros > 7) {
-           mostrarGameOver("Game Over! A palavra era: " + palavra_sorteada, "erro");
+           mostrarGameOver("Game Over! A palavra era: " + palavra_sorteada);
             efeitoDerrota();
             setTimeout(() => location.reload(), 1000);
         }
@@ -261,13 +238,9 @@ botao_envia.addEventListener("click", function() {
 
     }
 }
+
 botao_reinicia.addEventListener("click", function(){
     exibir_palavra();
     const span_letras_erradas = document.getElementById("letras_erradas")
     span_letras_erradas.textContent = ""
 });
-
-
-
-
-

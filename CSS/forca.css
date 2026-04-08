@@ -2,9 +2,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-}
-
-.body {
     background-color: #0f172a;
     color: #e2e8f0;
     height: 100%;
@@ -17,7 +14,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
     font-size: 24px;
     font-weight: bold;
 }
@@ -28,13 +24,14 @@ body {
     align-items: center;
     gap: 40px;
     background-color: #1e293b;
-    padding: 15px;
+    padding: 0 0 20px 45px;
 }
 
 .guias a {
     text-decoration: none;
     color: #e2e8f0;
     font-weight: bold;
+    font-size: 18px;
     transition: 0.3s;
 }
 
@@ -42,19 +39,15 @@ body {
     color: #38bdf8;
 }
 
-.guias button {
+.guias span {
     background-color: #38bdf8;
+    color: #000000;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     padding: 10px 20px;
     font-weight: bold;
-    cursor: pointer;
+    font-size: 30px;
     transition: 0.3s;
-}
-
-.guias button:hover {
-    background-color: #0ea5e9;
-    transform: scale(1.05);
 }
 
 .espaço_jogo {
@@ -85,6 +78,11 @@ body {
     outline: none;
     font-size: 18px;
     text-align: center;
+    text-transform: uppercase;
+}
+
+#Letra::placeholder{
+    text-transform: none;
 }
 
 #botao_envia, #botao_reinicia {
@@ -101,11 +99,6 @@ body {
 #botao_envia:hover, #botao_reinicia:hover {
     background-color: #16a34a;
     transform: scale(1.05);
-}
-
-#botao_jogar {
-    margin-left: 50px;
-    margin-right: 50px;
 }
 
 #bloqueio {
