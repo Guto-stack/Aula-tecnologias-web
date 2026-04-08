@@ -11,6 +11,7 @@ const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 const offset = (canvas.width - 140) / 2;
 
+let letras_inseridas = [];
 let erros = 0
 
 function mostrarGameOver(mensagem) {
@@ -21,9 +22,9 @@ function mostrarGameOver(mensagem) {
         position: "center",
         style: {
             background: "red",
-            fontSize: "20px",       // Tamanho da fonte
-            padding: "20px 40px",   // Tamanho do retângulo
-            borderRadius: "20px"    // Arredondamento
+            fontSize: "20px",
+            padding: "20px 40px",
+            borderRadius: "20px"
         },
     }).showToast();
 }
@@ -36,9 +37,9 @@ function mostrarVitoria(mensagem) {
         position: "center",
         style: {
             background: "green",
-            fontSize: "20px",       // Tamanho da fonte
-            padding: "20px 40px",   // Tamanho do retângulo
-            borderRadius: "20px"    // Arredondamento
+            fontSize: "20px",
+            padding: "20px 40px",
+            borderRadius: "20px"
         },
     }).showToast();
 }
@@ -136,6 +137,29 @@ botao_reinicia.addEventListener("click", function(){
 
 botao_envia.addEventListener("click", function() {
     const letra = input_palavra.value;
+
+    if(!letra) return;
+
+    if(letras_inseridas.includes(letra)){
+        Toastify({
+            text: "Você já tentou a letra " + letra,
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            style: {
+                background: "orange",
+                fontSize: "20px",
+                padding: "20px 40px",
+                borderRadius: "20px"
+            },
+        }).showToast();
+
+        input_palavra.value = "";
+        return;
+    }
+
+    letras_inseridas.push(letra);
+
     if (palavra_sorteada.includes(letra)) {        
         exibir_letras(letra);
         input_palavra.value = "";
