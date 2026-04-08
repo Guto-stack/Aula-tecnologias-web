@@ -3,13 +3,14 @@ console.log("O JavaScript carregou")
 const flash_vermelho = document.getElementById("flash_vermelho");
 
 
-
+let palavra_gerada = false;
 const input_palavra = document.getElementById("Letra")
 const botao_envia = document.getElementById("botao_envia")
 const botao_reinicia = document.getElementById("botao_reinicia")
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 const offset = (canvas.width - 140) / 2;
+let palavra_sorteada = "";
 
 let letras_inseridas = [];
 let erros = 0
@@ -22,6 +23,21 @@ function mostrarGameOver(mensagem) {
         position: "center",
         style: {
             background: "red",
+            fontSize: "20px",
+            padding: "20px 40px",
+            borderRadius: "20px"
+        },
+    }).showToast();
+}
+
+function informaUser(mensagem) {
+    Toastify({
+        text: mensagem,
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        style: {
+            background: "orange",
             fontSize: "20px",
             padding: "20px 40px",
             borderRadius: "20px"
@@ -114,15 +130,37 @@ function exibir_letras(letra) {
     }
 }
 
-const palavras = ["CASA", "CARRO", "ESCOLA", "JAVASCRIPT", "PYTHON", "COMPUTADOR", "TELEFONE", "MESA", "CADEIRA", "JANELA"]
-const palavra_sorteada = palavras[Math.floor(Math.random() * palavras.length)]
+function pegaPalavra_API() {
+    fetch("https://api.dicionario-aberto.net/random")
+        .then(response => response.json())
+        .then(data => {
+            palavra_sorteada = data.word.toUpperCase();
+            
+            console.log("Palavra sorteada:", palavra_sorteada);
+            palavra_gerada = true;
+        });
+
+}
+
+informaUser("A palavra pode conter acentos, cedilha e hífen. Boa sorte!")
+
+pegaPalavra_API();
+async function esperarPalavra() {
+    while (!palavra_gerada) {
+        await new Promise(resolve => setTimeout(resolve, 100)); // Verifica a cada 100ms
+    }
+}
+//await new Promise(resolve => setTimeout(resolve, 1000)); // Espera 1 segundo para garantir que a palavra foi carregada
+esperarPalavra().then(() => { 
 exibir_palavra();
+});
+
 desenha_forca();
 
 console.log("Palavra sorteada:", palavra_sorteada); 
 
 input_palavra.addEventListener("input", function() {
-    this.value = this.value.replace(/[^a-zA-Z]/g, "").toUpperCase();
+    this.value = this.value.replace(/[^a-zA-ZáéíóúâêôãõçÁÉÍÓÚÂÊÔÃÕÇ-]/g, "").toUpperCase();
 });
 
 input_palavra.addEventListener("keydown", function(event) {
@@ -191,6 +229,7 @@ botao_envia.addEventListener("click", function() {
     }
 
     function desenha_forca() {
+    setTimeout(() => {}, 3000); // Espera 1 segundo para garantir que a palavra foi carregada
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = "#38bdf8";
     ctx.lineWidth = 3;
