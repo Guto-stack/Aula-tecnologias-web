@@ -131,20 +131,21 @@ function exibir_letras(letra) {
 }
 
 function pegaPalavra_API() {
-    fetch("https://api.dicionario-aberto.net/random")
+    fetch("../JAVASCRIPT/palavras.json")
         .then(response => response.json())
         .then(data => {
-            palavra_sorteada = data.word.toUpperCase();
+            console.log("Palavras carregadas:", data);
+            palavra_sorteada = data[Math.floor(Math.random() * data.length)].toUpperCase();
+            console.log("Palavra sorteada (antes da normalização):", palavra_sorteada);
             
             palavra_sorteada = palavra_sorteada.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/-/g, '');
             
 
-
             console.log("Palavra sorteada:", palavra_sorteada);
             palavra_gerada = true;
-        });
+        })
 
-}
+}   
 
 informaUser("A palavra pode conter cedilha. Boa sorte!")
 
