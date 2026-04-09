@@ -82,7 +82,7 @@ function efeitoVitoria() {
 function efeitoDerrota() {
     let count = 0;
     const flash = () => {
-        if (count < 6) { // 3 piscadas (on/off)
+        if (count < 6) { 
             if (count % 2 === 0) {
                 flash_vermelho.classList.add("flash_vermelho");
             } else {
@@ -136,21 +136,24 @@ function pegaPalavra_API() {
         .then(data => {
             palavra_sorteada = data.word.toUpperCase();
             
+            palavra_sorteada = palavra_sorteada.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/-/g, '');
+            
+
+
             console.log("Palavra sorteada:", palavra_sorteada);
             palavra_gerada = true;
         });
 
 }
 
-informaUser("A palavra pode conter acentos, cedilha e hífen. Boa sorte!")
+informaUser("A palavra pode conter cedilha. Boa sorte!")
 
 pegaPalavra_API();
 async function esperarPalavra() {
     while (!palavra_gerada) {
-        await new Promise(resolve => setTimeout(resolve, 100)); // Verifica a cada 100ms
+        await new Promise(resolve => setTimeout(resolve, 1000)); 
     }
 }
-//await new Promise(resolve => setTimeout(resolve, 1000)); // Espera 1 segundo para garantir que a palavra foi carregada
 esperarPalavra().then(() => { 
 exibir_palavra();
 });
