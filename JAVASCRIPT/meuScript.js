@@ -151,7 +151,7 @@ informaUser("A palavra pode conter cedilha. Boa sorte!")
 pegaPalavra_API();
 async function esperarPalavra() {
     while (!palavra_gerada) {
-        await new Promise(resolve => setTimeout(resolve, 1000)); 
+        await new Promise(resolve => setTimeout(resolve, 100)); 
     }
 }
 esperarPalavra().then(() => { 
