@@ -6,6 +6,35 @@
     color: #e2e8f0;
     height: 100%;
     width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.header button{
+
+    background-color: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.header button:hover{
+    background-color: #16a34a;
+    transform: scale(1.05);
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.header a {
+    text-decoration: none;
 }
 
 .header {
