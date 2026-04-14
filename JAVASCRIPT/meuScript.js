@@ -233,30 +233,30 @@ botao_envia.addEventListener("click", function() {
     }
 
     function desenha_forca() {
-    setTimeout(() => {}, 3000); // Espera 1 segundo para garantir que a palavra foi carregada
+    setTimeout(() => {}, 3000); 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = "#38bdf8";
     ctx.lineWidth = 3;
 
-    //base
+
     ctx.beginPath();
     ctx.moveTo(10 + offset, 250);
     ctx.lineTo(150 + offset, 250);
     ctx.stroke();
 
-    //poste
+    
     ctx.beginPath();
     ctx.moveTo(30 + offset, 250);
     ctx.lineTo(30 + offset, 10);
     ctx.stroke();
 
-    //barra horizontal
+    
     ctx.beginPath();
     ctx.moveTo(30 + offset, 10);
     ctx.lineTo(100 + offset, 10);
     ctx.stroke();
 
-    //corda
+    
     ctx.beginPath();
     ctx.moveTo(100 + offset, 10);
     ctx.lineTo(100 + offset, 70);
@@ -267,13 +267,13 @@ botao_envia.addEventListener("click", function() {
         ctx.strokeStyle = "#e2e8f0";
         ctx.lineWidth = 3;
         switch(erros) {
-            case 1: //cabeça
+            case 1: 
                 ctx.beginPath();
                 ctx.arc(100 + offset, 90, 20, 0, Math.PI * 2);
                 ctx.stroke();
                 break;
 
-            case 2: //corpo
+            case 2: 
                 ctx.beginPath();
                 ctx.moveTo(100 + offset, 110);
                 ctx.lineTo(100 + offset, 160);
