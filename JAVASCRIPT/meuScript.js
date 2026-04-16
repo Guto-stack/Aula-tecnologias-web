@@ -164,7 +164,13 @@ desenha_forca();
 console.log("Palavra sorteada:", palavra_sorteada); 
 
 input_palavra.addEventListener("input", function() {
-    this.value = this.value.replace(/[^a-zA-ZáéíóúâêôãõçÁÉÍÓÚÂÊÔÃÕÇ-]/g, "").toUpperCase();
+    let value = this.value.replace(/[^a-zA-ZáéíóúâêôãõçÁÉÍÓÚÂÊÔÃÕÇ-]/g, "").toUpperCase();
+
+    if(value.length > 0){
+        this.value = value.charAt(0);
+    } else {
+        this.value = "";
+    }
 });
 
 input_palavra.addEventListener("keydown", function(event) {

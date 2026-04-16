@@ -68,6 +68,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 40px;
+    margin-bottom: 20px;
     gap: 15px;
 }
 
@@ -122,7 +123,12 @@ body {
     z-index: 10;
 }
 
+canvas {
+    max-width: 90vw;
+}
+
 .letras_erradas {
+    max-width: 90vw;
     width: 500px;
     height: 75px;
     border: 1px solid #38bdf8;
@@ -146,4 +152,66 @@ button:hover {
 
 * {
     transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 600px){
+    .header h1{
+        font-size: 24px;
+        padding: 10px;
+    }
+
+    .guias{
+        gap: 15px;
+        padding: 0 0 20px 25px;
+    }
+
+    .guias a{
+        font-size: 15px;
+    }
+
+    .guias span{
+        font-size: 22px;
+        padding: 8px 16px;
+    }
+
+    .espaco_jogo p {
+        font-size: 22px;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .espaco_jogo h1{
+        font-size: 27px;
+        text-align: center;
+    }
+
+    .letras_erradas{
+        width: 90%;
+        min-height: 60px;
+    }
+
+    #Letra{
+        width: 80%;
+        max-width: 250px;
+    }
+
+    .espaco_letras{
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    #botao_envia, #botao_reinicia{
+        margin-left: 0;
+        height: 45px;
+    }
+}
+
+@media (max-width: 900px){
+    .letras_erradas{
+        width: 80%;
+    }
 }
