@@ -1,9 +1,17 @@
+* {
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
 .body {
-    background-color: #0f172a;;
+    background-color: #0f172a;
+    font-family: Arial, sans-serif;
+    color: #e2e8f0;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    width: 100vw;
+    width: 100%;
+    max-height: 100vh;
 }
 
 h1{
@@ -14,24 +22,23 @@ h1{
 }
 
 .container {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: #e2e8f0;
-    height: 100%;
-    width: 100%;
-    text-align: left;
-    justify-content: center;
-    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
     font-size: 18px;
-    padding-left: 20px;
+    padding: 20px;
 }
 
 .container h1{
-    font-size: 36px;
+    font-size: 28px;
     color: lightblue;
-    margin-bottom: 20px;
-    text-align: center;
+    margin-bottom: 40px 0 20px 0;
+    text-align: left;
+}
+
+.container p{
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: justify;
 }
 
 .header {
@@ -43,10 +50,11 @@ h1{
     flex-direction: column;
     font-size: 24px;
     font-weight: bold;
+    width: 100%;
 }
 
 .header h1{
-    font-size: 50px;
+    font-size: clamp(35px, 8vw, 50px);
     color: lightblue;
     margin-bottom: 20px;
     text-align: center;
@@ -59,13 +67,13 @@ h1{
     border-radius: 40px;
     padding: 10px 10px;
     width: 140px;
-    height: 70px;
+    height: 60px;
     cursor: pointer;
     transition: 0.3s;
     margin-left: 20px;
     margin-bottom: 20px;
     font-size: 20px;
-    text-decoration: none;
+    font-weight: bold;
 }
 
 .header button:hover{
@@ -78,5 +86,15 @@ button:hover {
 }
 
 .textocorpo{
-    margin-top: 50px;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px){
+    .container h1{
+        font-size: 26px;
+    }
+
+    .container p{
+        font-size: 16px;
+    }
 }
