@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <title>Contato - Jogo da Forca</title>
+</head>
+
+<body class="body">
+    <header class="header">
+        <h1 class="textocabeza">Entre em Contato ✉️</h1>
+        <button onclick="window.location.href='forca.html'">Voltar</button>
+    </header>
+
+    <div class="container">
+        <div class="contatos-icones">
+
+            <div class="card-dev">
+                <a href="https://wa.me/5531999999999" target="_blank">
+                    <img src="../Imagens/augusto.png" alt="WhatsApp" class="icone-contato">
+                    <p class="nome-dev">Augusto</p>
+                </a>
+            </div>
+            
+            <div class="card-dev">
+                <a href="https://wa.me/5531999999999" target="_blank">
+                    <img src="../Imagens/arthur.png" alt="WhatsApp" class="icone-contato">
+                    <p class="nome-dev">Arthur</p>
+                </a>
+            </div>
+
+            <div class="card-dev">
+                <a href="https://wa.me/5531999999999" target="_blank">
+                    <img src="../Imagens/rafa.png" alt="WhatsApp" class="icone-contato">
+                    <p class="nome-dev">Rafael</p>
+                </a>
+            </div>
+
+        </div>
+
+        <h1 class="titulo-form">Envie uma mensagem</h1>
+        <form action="https://formsubmit.co/coloque_seu_email_aqui@gmail.com" method="POST" class="formulario">
+            <input type="text" name="name" placeholder="Seu Nome" required>
+            <input type="email" name="email" placeholder="Seu E-mail" required>
+            <textarea name="message" placeholder="Como podemos ajudar?" required></textarea>
+            
+            <input type="hidden" name="_next" value="http://localhost:8000/HTML/contato.html">
+            <input type="hidden" name="_captcha" value="false">
+
+            <button type="submit" id="botao_envia">Enviar Mensagem</button>
+        </form>
+    </div>
+</body>
+</html>
