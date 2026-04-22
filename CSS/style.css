@@ -89,16 +89,6 @@ button:hover {
     margin-top: 20px;
 }
 
-@media (max-width: 600px){
-    .container h1{
-        font-size: 26px;
-    }
-
-    .container p{
-        font-size: 16px;
-    }
-}
-
 .contatos-icones {
     display: flex;
     justify-content: center;
@@ -202,4 +192,18 @@ button:hover {
     color: lightblue;
     margin-top: 40px;
     font-size: 28px;
+}
+
+@media (max-width: 600px){
+    .container h1{
+        font-size: 26px;
+    }
+
+    .container p{
+        font-size: 16px;
+    }
+
+    .contatos-icones {
+        gap: 15px; 
+    }
 }
